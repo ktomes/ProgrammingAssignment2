@@ -12,15 +12,16 @@
 
 makeCacheMatrix <- function(x = matrix()) {
         m <- NULL
-        set <- function(y) {
+        set <- function(y) { # set function will take matrix as arg and write to cache
                 x <<- y
                 m <<- NULL
         }
-        get <- function() x
-        setInverse <- function(solve) m <<- solve
-        getInverse <- function() m
+        get <- function() x  # get function returns a matrix from cache
+        setInverse <- function(solve) m <<- solve # set function uses solve to return the inverse, then write to cache
+        getInverse <- function() m # getInverse returns invers of Matrix
         
-        ## returns a list that of functions that can be called
+        ## returns a list that of functions that can be called via an object created by calling "makeCachMatrix
+        ## or by "cacheSolve" the client function.
         list(set = set, 
              get = get,
              getInverse = getInverse,
